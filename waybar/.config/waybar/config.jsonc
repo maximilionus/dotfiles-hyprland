@@ -1,0 +1,77 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/media"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "tray",
+        "idle_inhibitor",
+        "network",
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "battery#bat2",
+        "keyboard-state",
+        "hyprland/language",
+        "clock"
+    ],
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "WAKE {icon}",
+        "format-icons": {
+            "activated": "Inhibit",
+            "deactivated": "Unlock"
+        }
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%e  %a  %H:%M}"
+    },
+    "backlight": {
+        "format": "B {percent}%"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "BAT {capacity}%",
+        "format-full": "BAT {capacity}%",
+        "format-charging": "BAT {capacity}%+",
+        "format-plugged": "BAT {capacity}%="
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        "format-wifi": "NET W {essid} ({signalStrength}%)",
+        "format-ethernet": "NET Eth",
+        "format-linked": "NET Eth {ifname} (No IP)",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "OUT {volume}% {format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "IN {volume}%",
+        "format-source-muted": "",
+        "on-click": "pavucontrol"
+    }
+}
