@@ -1,6 +1,7 @@
 hyprland
 hyprpaper
 hyprshot
+hyprpicker
 waybar
 foot
 foot-terminfo
