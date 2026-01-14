@@ -24,6 +24,9 @@
         "hyprland/language",
         "clock"
     ],
+    "hyprland/language": {
+        "format": "<b>LANG</b> {short}"
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -34,10 +37,10 @@
         }
     },
     "idle_inhibitor": {
-        "format": "WAKE {icon}",
+        "format": "<b>WAKE</b> {icon}",
         "format-icons": {
-            "activated": "Inhibit",
-            "deactivated": "Unlock"
+            "activated": "Yes",
+            "deactivated": "No"
         }
     },
     "tray": {
@@ -47,39 +50,39 @@
         "format": "{:%e  %a  %H:%M}"
     },
     "backlight": {
-        "format": "B {percent}%"
+        "format": "<b>B</b> {percent}%"
     },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "BAT {capacity}%",
-        "format-full": "BAT {capacity}%",
-        "format-charging": "BAT+ {capacity}%",
-        "format-plugged": "BAT= {capacity}%"
+        "format": "<b>BAT</b> {capacity}%",
+        "format-full": "<b>BAT</b> {capacity}%",
+        "format-charging": "<b>BAT</b>+ {capacity}%",
+        "format-plugged": "<b>BAT</b>= {capacity}%"
     },
     "battery#bat2": {
         "bat": "BAT2"
     },
     "network": {
-        "format-wifi": "NET W {essid} ({signalStrength}%)",
-        "format-ethernet": "NET Eth",
-        "format-linked": "NET Eth {ifname} (No IP)",
+        "format-wifi": "<b>NET</b> W {essid} ({signalStrength}%)",
+        "format-ethernet": "<b>NET</b> Eth",
+        "format-linked": "<b>NET</b> Eth (No IP)",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "bluetooth": {
-        "format": "B On",
+        "format": "<b>B</b> On",
         "format-disabled": "",
-        "format-connected": "B Con {num_connections}",
+        "format-connected": "<b>B</b> Con {num_connections}",
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "pulseaudio": {
-        "format": "OUT {volume}% {format_source}",
-        "format-muted": "{format_source}",
-        "format-source": "IN {volume}%",
+        "format": "<b>OUT</b> {volume}% {format_source}",
+        "format-muted": "<b>OUT</b> Muted {format_source}",
+        "format-source": "<b>IN</b> {volume}%",
         "format-source-muted": "",
         "on-click": "pavucontrol"
     }
