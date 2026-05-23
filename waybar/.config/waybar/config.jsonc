@@ -8,9 +8,7 @@
         "hyprland/workspaces",
         "custom/media"
     ],
-    "modules-center": [
-        "hyprland/window"
-    ],
+    "modules-center": [],
     "modules-right": [
         "tray",
         "idle_inhibitor",
