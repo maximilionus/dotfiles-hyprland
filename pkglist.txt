@@ -3,9 +3,9 @@ hyprpaper
 hyprshot
 hyprpicker
 waybar
+rofi
 foot
 foot-terminfo
-wmenu
 jq
 libnotify
 dunst
