@@ -1,16 +1,16 @@
 // -*- mode: jsonc -*-
 {
     "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 24, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 16, // Gaps between modules (4px)
     "modules-left": [
-        "hyprland/workspaces",
-        "custom/media"
+        "hyprland/workspaces"
     ],
     "modules-center": [],
     "modules-right": [
         "tray",
+        "privacy",
         "idle_inhibitor",
         "bluetooth",
         "network",
@@ -83,5 +83,28 @@
         "format-source": "<b>IN</b> {volume}%",
         "format-source-muted": "",
         "on-click": "pavucontrol"
+    },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ],
+        "ignore-monitor": true
     }
 }
