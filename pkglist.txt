@@ -3,6 +3,7 @@ hyprpaper
 hyprshot
 hyprpicker
 hyprlock
+hypridle
 waybar
 rofi
 foot
