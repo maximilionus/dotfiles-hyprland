@@ -25,3 +25,4 @@ gnome-keyring
 polkit-gnome
 udisks2
 inter-font
+otf-font-awesome

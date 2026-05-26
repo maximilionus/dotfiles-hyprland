@@ -23,22 +23,22 @@
         "clock"
     ],
     "hyprland/language": {
-        "format": "<b>LANG</b> {short}"
+        "format": " {short}"
     },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
         "format": "{name} {icon}",
         "format-icons": {
-            "locked": "Lock",
+            "locked": "",
             "unlocked": ""
         }
     },
     "idle_inhibitor": {
-        "format": "<b>WAKE</b> {icon}",
+        "format": "{icon}",
         "format-icons": {
-            "activated": "Yes",
-            "deactivated": "No"
+            "activated": "",
+            "deactivated": ""
         }
     },
     "tray": {
@@ -48,40 +48,57 @@
         "format": "{:%e  %a  %H:%M}"
     },
     "backlight": {
-        "format": "<b>B</b> {percent}%"
+        "format": " {percent}%"
     },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "<b>BAT</b> {capacity}%",
-        "format-full": "<b>BAT</b> {capacity}%",
-        "format-charging": "<b>BAT</b>+ {capacity}%",
-        "format-plugged": "<b>BAT</b>= {capacity}%"
+        "events": {
+            "on-discharging-warning": "notify-send -u normal 'Low Battery'",
+            "on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+            "on-charging-100": "notify-send -u normal 'Battery Full'"
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "max-length": 25
     },
     "battery#bat2": {
         "bat": "BAT2"
     },
     "network": {
-        "format-wifi": "<b>NET</b> W {essid} ({signalStrength}%)",
-        "format-ethernet": "<b>NET</b> Eth",
-        "format-linked": "<b>NET</b> Eth (No IP)",
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": "",
+        "format-disconnected": "",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "bluetooth": {
-        "format": "<b>B</b> On",
+        "format": "",
         "format-disabled": "",
-        "format-connected": "<b>B</b> Con {num_connections}",
+        "format-connected": " {num_connections}",
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "pulseaudio": {
-        "format": "<b>OUT</b> {volume}% {format_source}",
-        "format-muted": "<b>OUT</b> Muted {format_source}",
-        "format-source": "<b>IN</b> {volume}%",
-        "format-source-muted": "",
+        "format": "{icon} {volume}%{format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "  {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 5,
         "on-click": "pavucontrol"
     },
     "privacy": {
