@@ -10,7 +10,7 @@ foot
 foot-terminfo
 jq
 libnotify
-dunst
+mako
 grim
 slurp
 imv
