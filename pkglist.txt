@@ -1,10 +1,9 @@
 hyprland
-hyprlock
-hyprpolkitagent
-hypridle
-hyprshot
 hyprpaper
+hyprshot
 hyprpicker
+hyprlock
+hypridle
 waybar
 rofi
 foot
@@ -24,6 +23,7 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 gnome-themes-extra
 gnome-keyring
+polkit-gnome
 udisks2
 inter-font
 otf-font-awesome
