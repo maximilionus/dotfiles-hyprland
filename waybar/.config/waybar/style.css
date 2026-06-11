@@ -56,6 +56,10 @@ button:hover {
     margin-right: 0;
 }
 
+.modules-right > widget:last-child > * {
+    margin-right: 16px;
+}
+
 #privacy {
     padding: 0;
 }
