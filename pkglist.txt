@@ -6,8 +6,7 @@ hyprlock
 hypridle
 waybar
 rofi
-foot
-foot-terminfo
+kitty
 jq
 libnotify
 mako
