@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if FOCUSED=$(hyprctl activewindow -j | jq -r '.pid') && [ -n "$FOCUSED" ]; then
     # cwd of first-level child is usually more useful (e.g. shell proc forked from terminal emulator)
