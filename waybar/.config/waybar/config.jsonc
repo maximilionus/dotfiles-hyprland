@@ -5,7 +5,7 @@
     "height": 24, // Waybar height (to be removed for auto height)
     "spacing": 16, // Gaps between modules (4px)
     "modules-left": [
-        "ext/workspaces"
+        "hyprland/workspaces"
     ],
     "modules-center": [],
     "modules-right": [
@@ -24,12 +24,6 @@
     ],
     "hyprland/language": {
         "format": " {short}"
-    },
-    "ext/workspaces": {
-        "all-outputs": true,
-        "on-click": "activate",
-        "active-only": false,
-        "sort-by-number": true
     },
     "keyboard-state": {
         "numlock": true,
