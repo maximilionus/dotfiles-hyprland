@@ -28,7 +28,8 @@
     "ext/workspaces": {
         "all-outputs": true,
         "on-click": "activate",
-        "active-only": false
+        "active-only": false,
+        "sort-by-number": true
     },
     "keyboard-state": {
         "numlock": true,
