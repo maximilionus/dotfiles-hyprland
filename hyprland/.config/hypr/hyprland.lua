@@ -198,6 +198,9 @@ hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + R", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.pin())
 
+hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --freeze --clipboard-only"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m window --freeze --clipboard-only"))
+
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
