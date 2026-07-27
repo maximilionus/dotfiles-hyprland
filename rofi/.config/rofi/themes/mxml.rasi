@@ -44,17 +44,12 @@ mainbox {
 inputbar {
   padding: 10px 10px;
   background-color: @bg-alt;
-  children: [prompt, entry];
+  children: [entry];
 }
 
 entry {
   background-color: @bg-alt;
   padding: 12px 3px;
-}
-
-prompt {
-  background-color: inherit;
-  padding: 12px;
 }
 
 listcontainer {
