@@ -300,7 +300,17 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "firefox-popup-player",
+    name  = "center-floating-windows",
+    match = {
+        float = true,
+    },
+
+    center = true,
+    size = { 1000, 800 },
+})
+
+hl.window_rule({
+    name  = "pin-firefox-popup-player",
     match = {
         class = "firefox",
         title = "Picture-in-Picture"
