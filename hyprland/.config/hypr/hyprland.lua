@@ -300,9 +300,10 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "center-floating-windows",
+    name  = "center-xdg-popups",
     match = {
         float = true,
+        class = "^(xdg-desktop-portal.*)$",
     },
 
     center = true,
