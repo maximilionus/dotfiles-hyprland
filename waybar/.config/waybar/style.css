@@ -60,11 +60,7 @@ button:hover {
     margin-right: 16px;
 }
 
-#privacy {
-    background-color: #525252;
-}
-
 #privacy-item {
     padding: 0 5px;
-    color: white;
+    color: #afafaf;
 }
