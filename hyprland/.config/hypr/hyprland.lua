@@ -67,7 +67,6 @@ hl.config({
 
     cursor = {
         inactive_timeout = 8,
-        no_hardware_cursors = true,
     },
 
     decoration = {
