@@ -1,9 +1,9 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    "spacing": 16, // Gaps between modules (4px)
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "spacing": 16, // Gaps between modules
     "modules-left": [
         "ext/workspaces"
     ],
