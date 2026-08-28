@@ -1,15 +1,9 @@
 hyprland
-hyprpaper
 hyprshot
-hyprpicker
-hyprlock
-hypridle
-waybar
-rofi
+noctalia
 kitty
 jq
 libnotify
-mako
 grim
 slurp
 imv

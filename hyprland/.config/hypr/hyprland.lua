@@ -13,7 +13,7 @@ hl.monitor({
 ---- PROGRAMS ----
 ---------------------
 local terminal    = "kitty"
-local menu        = "rofi -show combi"
+local shell_ipc   = "noctalia msg "
 
 
 -------------------
@@ -21,13 +21,10 @@ local menu        = "rofi -show combi"
 -------------------
 hl.on("hyprland.start", function () 
   hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
-  hl.exec_cmd("hyprpaper")
   hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
   hl.exec_cmd("gnome-keyring-daemon --start")
-  hl.exec_cmd("hypridle")
-  hl.exec_cmd("mako")
   hl.exec_cmd("playerctld daemon")
-  hl.exec_cmd("while true; do waybar; done")
+  hl.exec_cmd("noctalia")
 end)
 
 
@@ -193,7 +190,7 @@ local closeWindowBind = hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())
 hl.bind(mainMod .. " + SHIFT + Delete", hl.dsp.exec_cmd("loginctl terminate-session $XDG_SESSION_ID"))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd(shell_ipc .. "panel-toggle launcher"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + R", hl.dsp.layout("togglesplit")) -- dwindle only
