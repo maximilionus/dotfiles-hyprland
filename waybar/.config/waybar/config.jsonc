@@ -25,6 +25,11 @@
     "hyprland/language": {
         "format": " {short}"
     },
+    "hyprland/workspaces": {
+        // Partially fix the missing Lua support for workspaces module
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e+1\"})' ",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e-1\"})' "
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
