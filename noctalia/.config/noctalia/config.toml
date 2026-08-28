@@ -42,7 +42,7 @@ widget_spacing     = 12          # gap between widgets within a section
 hover_highlight    = true        # softly tint the widget under the mouse pointer with its foreground color
 scale              = 1.0         # content scale multiplier for icons, spacing, and base text size
 font_scale         = 0.85        # additional text-only scale multiplier
-font_weight        = 500         # CSS weight 100–1000 (e.g. 400 regular, 700 bold); primary label weight for bar widgets
+font_weight        = 400         # CSS weight 100–1000 (e.g. 400 regular, 700 bold); primary label weight for bar widgets
 font_family        = ""          # typeface for this bar's widgets; empty inherits the global font
 
 capsule            = false
