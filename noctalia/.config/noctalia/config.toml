@@ -53,12 +53,10 @@ capsule_opacity    = 1.0
 
 start  = ["launcher", "workspaces"]
 center = []
-end    = ["privacy", "media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "clock", "session"]
+end    = ["privacy", "media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "keyboard_layout", "clock", "session"]
 
-[nightlight]
-enabled = false
-force = true
-temperature_night = 4000
+[widget.clock]
+format = "{:%e  %a  %H:%M}"
 
 [widget.workspaces]
 font_scale = 1.4
@@ -70,6 +68,11 @@ hide_inactive  = true
 
 [widget.media]
 hide_when_no_media = true
+
+[nightlight]
+enabled = false
+force = true
+temperature_night = 4000
 
 [system.monitor]
 enabled = false
