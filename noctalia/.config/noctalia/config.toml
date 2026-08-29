@@ -58,6 +58,9 @@ end    = ["privacy", "media", "tray", "notifications", "clipboard", "network", "
 [widget.clock]
 format = "{:%e  %a  %H:%M}"
 
+[widget.launcher]
+glyph = "menu-2"
+
 [widget.workspaces]
 font_scale = 1.4
 style = "regular"
