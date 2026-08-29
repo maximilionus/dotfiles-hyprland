@@ -86,6 +86,9 @@ enabled = false
 [location]
 enabled = false
 
+[osd.kinds]
+media = false
+
 [idle]
 behavior_order = ["lock", "screen-off"]
 pre_action_fade_seconds = 2.0
