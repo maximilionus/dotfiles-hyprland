@@ -62,6 +62,7 @@ format = "{:%e  %a  %H:%M}"
 glyph = "menu-2"
 
 [widget.workspaces]
+inactive_pill_size = 1.1 # Fixes misaligned workspace number
 font_scale = 1.4
 style = "regular"
 
