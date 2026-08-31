@@ -3,6 +3,10 @@ mode = "dark"
 source = "custom"
 custom_palette = "MyPalette"
 
+[shell]
+offline_mode = true
+telemetry_enabled = false
+
 [wallpaper]
 enabled             = true
 
