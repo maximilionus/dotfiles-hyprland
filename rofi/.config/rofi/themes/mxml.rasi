@@ -28,17 +28,24 @@ configuration {
   fg: #FAFAFA;
   fg-alt: #808080;
 
-  background-color: @bg;
+  background-color: @bg-alt;
   text-color: @fg;
 }
 
 window {
+  anchor: north;
+  location: north;
+  y-offset: 40%;
+  width: 20%;
   transparency: "real";
   border-radius: 24px;
+  border: 1px;
+  border-color: #333333;
+  background-color: @bg;
 }
 
 mainbox {
-  children: [inputbar, listcontainer];
+  children: [inputbar, listview];
 }
 
 inputbar {
@@ -52,26 +59,28 @@ entry {
   padding: 12px 3px;
 }
 
-listcontainer {
-  children: [listview];
-  padding: 10px 10px;
-  background-color: @bg-alt;
-}
-
 listview {
+  border-color: @bg-alt;
+  border: 10px;
   border-radius: 24px;
+  require-input: true;
+  dynamic: true;
+  fixed-height: false;
   lines: 8;
 }
 
 element {
   children: [element-icon, element-text];
+  background-color: @bg;
 }
 
 element-icon {
+  background-color: inherit;
   padding: 10px 10px;
 }
 
 element-text {
+  background-color: inherit;
   padding: 10px 0;
   text-color: @fg-alt;
 }

@@ -3,4 +3,5 @@ configuration {
   font: "sans-serif 14";
   combi-modi: "drun,window";
 }
+
 @theme "~/.config/rofi/themes/mxml.rasi"
