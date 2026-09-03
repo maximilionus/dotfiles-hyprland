@@ -14,6 +14,7 @@ hl.monitor({
 ---------------------
 local terminal    = "kitty"
 local menu        = "rofi -show combi"
+local workspace_layer = 0
 
 
 -------------------
@@ -227,13 +228,28 @@ hl.bind(mainMod .. " + SHIFT + u", hl.dsp.window.resize({ x = 0, y = 35, relativ
 hl.bind(mainMod .. " + SHIFT + i", hl.dsp.window.resize({ x = 0, y = -35, relative=true }))
 hl.bind(mainMod .. " + SHIFT + o", hl.dsp.window.resize({ x = 35, y = 0, relative=true }))
 
--- Switch workspaces with mainMod + [0-9]
+-- Switch workspaces
 for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + CONTROL + " .. key, hl.dsp.focus({ workspace = 10 + i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-    hl.bind(mainMod .. " + CONTROL + SHIFT + " .. key, hl.dsp.window.move({ workspace = 10 + i }))
+    local key = i % 10
+
+    hl.bind(mainMod .. " + " .. key, function()
+        hl.dispatch(hl.dsp.focus({
+            workspace = workspace_layer + i
+        }))
+    end)
+
+    hl.bind(mainMod .. " + SHIFT + " .. key, function()
+        hl.dispatch(hl.dsp.window.move({
+            workspace = workspace_layer + i
+        }))
+    end)
+
+    hl.bind(mainMod .. " + CONTROL + " .. key, function()
+        workspace_layer = key * 10
+        hl.dispatch(hl.dsp.exec_cmd(
+            string.format("notify-send 'Set workspace layer to %s'", key)
+        ))
+    end)
 end
 
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
