@@ -200,6 +200,28 @@ hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + R", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.pin())
 
+local function set_workspace_layout(layout)
+    local workspace = hl.get_active_workspace()
+
+    if not workspace then
+        return
+    end
+
+    hl.workspace_rule({ workspace = tostring(workspace.id), layout = layout })
+
+    hl.dispatch(hl.dsp.exec_cmd(
+        string.format("notify-send 'Set workspace layout to %s'", layout)
+    ))
+end
+
+hl.bind(mainMod .. " + SHIFT + T", function()
+    set_workspace_layout("scrolling")
+end)
+
+hl.bind(mainMod .. " + T", function()
+    set_workspace_layout("dwindle")
+end)
+
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --freeze --clipboard-only"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m window --freeze --clipboard-only"))
 
