@@ -197,6 +197,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.layout("colresize 1.0"))
 hl.bind(mainMod .. " + R", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.pin())
 
