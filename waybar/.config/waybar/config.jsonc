@@ -4,10 +4,12 @@
     "position": "top",
     "height": 24,
     "spacing": 16, // Gaps between modules
+    "fixed-center": false,
+    "expand-center": true,
     "modules-left": [
         "hyprland/workspaces"
     ],
-    "modules-center": [],
+    "modules-center": [ "custom/hyprland-scroll-focus" ],
     "modules-right": [
         "privacy",
         "tray",
@@ -27,8 +29,15 @@
     },
     "hyprland/workspaces": {
         // Partially fix the missing Lua support for workspaces module
-        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e-1\"})' ",
-        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e+1\"})' "
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e-1\"})'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e+1\"})'"
+    },
+    "custom/hyprland-scroll-focus": {
+        "format": " ",
+        "expand": true,
+        "tooltip": false,
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ direction = \"left\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ direction = \"right\" })'"
     },
     "keyboard-state": {
         "numlock": true,
