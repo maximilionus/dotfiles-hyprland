@@ -267,13 +267,23 @@ for i = 1, 10 do
             workspace = workspace_layer + i
         }))
     end)
+end
 
-    hl.bind(mainMod .. " + CONTROL + " .. key, function()
-        workspace_layer = key * 10
+local function bind_workspace_layer(key, layer)
+    hl.bind(mainMod .. " + " .. key, function()
+        workspace_layer = layer
         hl.dispatch(hl.dsp.exec_cmd(
-            string.format("notify-send 'Set workspace layer to %s'", key)
+            string.format("notify-send 'Set workspace layer to %s'", layer // 10)
         ))
     end)
+end
+
+-- Switch workspace layers
+-- Grave (~) resets the layer
+bind_workspace_layer("Grave", 0)
+-- F1 .. F12
+for i = 1, 12 do
+    bind_workspace_layer("F" .. i, i * 10)
 end
 
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
