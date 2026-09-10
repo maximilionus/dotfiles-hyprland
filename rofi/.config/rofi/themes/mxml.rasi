@@ -40,7 +40,7 @@ window {
   transparency: "real";
   border-radius: 24px;
   border: 1px;
-  border-color: #333333;
+  border-color: #ffffff33;
   background-color: @bg;
 }
 
