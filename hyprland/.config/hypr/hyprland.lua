@@ -12,7 +12,7 @@ hl.monitor({
 ---------------------
 ---- PROGRAMS ----
 ---------------------
-local terminal    = "kitty"
+local terminal    = "foot"
 local menu        = "rofi -show combi"
 local workspace_layer = 0
 
