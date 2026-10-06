@@ -1,6 +1,63 @@
-------------------
----- MONITORS ----
-------------------
+local mainMod         = "SUPER"
+local terminal        = "foot"
+local menu            = "rofi -show combi"
+local workspace_layer = 0
+
+
+-- exec_cmd in cwd of the currently active window
+local function exec_cmd_cwd(command)
+    local w = hl.get_active_window()
+    local pid = w and w.pid
+    local cwd
+
+    if pid then
+        local f = io.open("/proc/" .. pid .. "/task/" .. pid .. "/children")
+        local children = f and f:read("*a")
+        if f then f:close() end
+
+        for child in (children or ""):gmatch("%d+") do
+            local p = io.popen("readlink -e /proc/" .. child .. "/cwd 2>/dev/null")
+            cwd = p and p:read("*l")
+            if p then p:close() end
+            if cwd then break end
+        end
+
+        if not cwd then
+            local p = io.popen("readlink -e /proc/" .. pid .. "/cwd 2>/dev/null")
+            cwd = p and p:read("*l")
+            if p then p:close() end
+        end
+    end
+
+    hl.dispatch(hl.dsp.exec_cmd(
+        "cd ".. cwd .. ";" .. command
+    ))
+end
+
+local function set_workspace_layout(layout)
+    local workspace = hl.get_active_workspace()
+
+    if not workspace then
+        return
+    end
+
+    hl.workspace_rule({ workspace = tostring(workspace.id), layout = layout })
+
+    hl.dispatch(hl.dsp.exec_cmd(
+        string.format("notify-send 'Set workspace layout to %s'", layout)
+    ))
+end
+
+local function bind_workspace_layer(key, layer)
+    hl.bind(mainMod .. " + " .. key, function()
+        workspace_layer = layer
+        hl.dispatch(hl.dsp.exec_cmd(
+            string.format("notify-send 'Set workspace layer to %s'", layer // 10)
+        ))
+    end)
+end
+
+
 hl.monitor({
     output   = "",
     mode     = "preferred",
@@ -9,17 +66,6 @@ hl.monitor({
 })
 
 
----------------------
----- PROGRAMS ----
----------------------
-local terminal    = "foot"
-local menu        = "rofi -show combi"
-local workspace_layer = 0
-
-
--------------------
----- AUTOSTART ----
--------------------
 hl.on("hyprland.start", function () 
   hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
   hl.exec_cmd("hyprpaper")
@@ -32,16 +78,10 @@ hl.on("hyprland.start", function ()
 end)
 
 
--------------------------------
----- ENVIRONMENT VARIABLES ----
--------------------------------
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
 
------------------------
----- LOOK AND FEEL ----
------------------------
 hl.config({
     general = {
         gaps_in  = 2,
@@ -105,7 +145,6 @@ hl.config({
     },
 })
 
--- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 hl.curve("easeOutQuint",   { type = "bezier", points = { {0.23, 1},    {0.32, 1}    } })
 hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1}    } })
 hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}       } })
@@ -149,10 +188,6 @@ hl.config({
     },
 })
 
-----------------
-----  MISC  ----
-----------------
-
 hl.config({
     misc = {
         force_default_wallpaper  = 1,
@@ -162,10 +197,6 @@ hl.config({
     },
 })
 
-
----------------
----- INPUT ----
----------------
 
 hl.config({
     input = {
@@ -193,13 +224,10 @@ hl.gesture({
 })
 
 
----------------------
----- KEYBINDINGS ----
----------------------
-
-local mainMod = "SUPER"
-
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + Return", function()
+    exec_cmd_cwd(terminal)
+end)
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 local closeWindowBind = hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.kill())
 hl.bind(mainMod .. " + SHIFT + Delete", hl.dsp.exec_cmd("loginctl terminate-session $XDG_SESSION_ID"))
@@ -211,20 +239,6 @@ hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.layout("colresize 1.0"))
 hl.bind(mainMod .. " + R", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.pin())
-
-local function set_workspace_layout(layout)
-    local workspace = hl.get_active_workspace()
-
-    if not workspace then
-        return
-    end
-
-    hl.workspace_rule({ workspace = tostring(workspace.id), layout = layout })
-
-    hl.dispatch(hl.dsp.exec_cmd(
-        string.format("notify-send 'Set workspace layout to %s'", layout)
-    ))
-end
 
 hl.bind(mainMod .. " + SHIFT + T", function()
     set_workspace_layout("scrolling")
@@ -279,15 +293,6 @@ for i = 1, 10 do
     end)
 end
 
-local function bind_workspace_layer(key, layer)
-    hl.bind(mainMod .. " + " .. key, function()
-        workspace_layer = layer
-        hl.dispatch(hl.dsp.exec_cmd(
-            string.format("notify-send 'Set workspace layer to %s'", layer // 10)
-        ))
-    end)
-end
-
 -- Switch workspace layers
 -- Grave (~) resets the layer
 bind_workspace_layer("Grave", 0)
@@ -317,10 +322,6 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
-
---------------------------------
----- WINDOWS AND WORKSPACES ----
---------------------------------
 
 hl.window_rule({
     name  = "suppress-maximize-events",
