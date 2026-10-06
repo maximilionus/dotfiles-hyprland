@@ -384,3 +384,11 @@ hl.window_rule({
     size = { 800, 450 },
 })
 
+hl.window_rule({
+    name  = "allow-fullscreen-tearing",
+    match = {
+        fullscreen = true,
+    },
+
+    immediate = true
+})
