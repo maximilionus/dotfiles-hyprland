@@ -61,6 +61,16 @@ hl.config({
         layout = "dwindle",
     },
 
+    render = {
+        direct_scanout = 1, -- For any fullscreen window
+    },
+
+    quirks = {
+        -- Workaround for direct_scanout black screen
+        -- https://github.com/hyprwm/Hyprland/discussions/14843
+        skip_non_kms_dmabuf_formats = 1,
+    },
+
     ecosystem = {
         no_update_news = true,
         no_donation_nag = true,
