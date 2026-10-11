@@ -52,7 +52,7 @@ local function bind_workspace_layer(key, layer)
     hl.bind(mainMod .. " + " .. key, function()
         workspace_layer = layer
         hl.dispatch(hl.dsp.exec_cmd(
-            string.format("notify-send 'Set workspace layer to %s'", layer // 10)
+            string.format("notify-send --urgency=low 'Set workspace layer to %s'", layer // 10)
         ))
     end)
 end
