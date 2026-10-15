@@ -34,6 +34,27 @@ local function exec_cmd_cwd(command)
     ))
 end
 
+local function move_all_windows_to_workspace(workspace, follow)
+    local active_ws = hl.get_active_workspace()
+    local windows = hl.get_windows({ workspace = active_ws })
+
+    for _,window in pairs(windows) do
+        hl.dispatch(
+            hl.dsp.window.move({
+                window = window,
+                workspace = workspace,
+                follow = false
+            })
+        )
+    end
+
+    if follow then
+        hl.dispatch(hl.dsp.focus({
+            workspace = workspace
+        }))
+    end
+end
+
 local function set_workspace_layout(layout)
     local workspace = hl.get_active_workspace()
 
@@ -290,6 +311,13 @@ for i = 1, 10 do
         hl.dispatch(hl.dsp.window.move({
             workspace = workspace_layer + i
         }))
+    end)
+
+    hl.bind(mainMod .. " + SHIFT + CONTROL + " .. key, function()
+        move_all_windows_to_workspace(
+            workspace_layer + i,
+            true
+        )
     end)
 end
 
