@@ -58,10 +58,6 @@ end
 local function set_workspace_layout(layout)
     local workspace = hl.get_active_workspace()
 
-    if not workspace then
-        return
-    end
-
     hl.workspace_rule({ workspace = tostring(workspace.id), layout = layout })
 
     hl.dispatch(hl.dsp.exec_cmd(
