@@ -418,3 +418,23 @@ hl.window_rule({
 
     immediate = true
 })
+
+-- Automatic DnD mode on fullscreen
+local is_dnd_set = false
+local function update_mako(w)
+    if w and (w.fullscreen == 2 or w.fullscreen == 3) and not is_dnd_set then
+        hl.exec_cmd("makoctl mode -a do-not-disturb")
+        is_dnd_set = true
+    elseif w and is_dnd_set then
+        hl.exec_cmd("makoctl mode -r do-not-disturb")
+        is_dnd_set = false
+    end
+end
+
+hl.on("window.active", function(w)
+    update_mako(w)
+end)
+
+hl.on("window.fullscreen", function(w)
+    update_mako(w)
+end)
