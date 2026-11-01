@@ -82,6 +82,11 @@ hl.monitor({
     scale    = "1",
 })
 
+hl.monitor({
+    output   = "HDMI-A-1",
+    disabled = false,
+})
+
 
 hl.on("hyprland.start", function () 
   hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
@@ -91,7 +96,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("hypridle")
   hl.exec_cmd("mako")
   hl.exec_cmd("playerctld daemon")
-  hl.exec_cmd("while true; do waybar; done")
+  hl.exec_cmd("ironbar")
 end)
 
 

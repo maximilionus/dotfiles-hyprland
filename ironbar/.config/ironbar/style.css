@@ -1,0 +1,111 @@
+:root {
+    --color-dark-primary: #000000;
+    --color-dark-secondary: #303030;
+    --color-white: #fff;
+    --color-active: #6699cc;
+    --color-urgent: #8f0a0a;
+
+    --margin-lg: 0.4em;
+    --margin-sm: 0.4em;
+}
+
+* {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background-image: none;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+}
+
+#bar button,
+#bar .workspaces .item {
+    min-height: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#bar * {
+    border-radius: 10px;
+}
+
+scale > trough {
+    background-color: var(--color-dark-secondary);
+}
+
+scale > trough > highlight {
+    background-color: var(--color-active);
+    border-style: solid;
+    border-color: var(--color-active);
+    border-width: 0.2em;
+}
+
+scale > trough > slider {
+    background-color: var(--color-white);
+}
+
+switch > slider {
+    background-color: var(--color-white);
+}
+
+switch:checked {
+    background-color: var(--color-active);
+}
+
+switch:not(:checked) {
+  background-color: var(--color-dark-secondary);
+}
+
+#bar, popover, popover contents, calendar, popover .view {
+    background-color: var(--color-dark-primary);
+}
+
+popover, popover .view {
+    border-style: solid;
+    border-color: var(--color-white);
+    border-width: 0.25px;
+}
+
+box, button, label {
+    background-color: #0000;
+    color: var(--color-white);
+}
+
+button {
+    padding-left: var(--margin-sm);
+    padding-right: var(--margin-sm);
+}
+
+button:hover, button:active, *:selected {
+    background-color: var(--color-dark-secondary);
+}
+
+#end > * + * {
+    margin-left: var(--margin-sm);
+    margin-right: var(--margin-sm);
+}
+
+.popup-clock .calendar-clock {
+    font-size: 2.0em;
+}
+
+.popup-clock .calendar .today {
+    background-color: var(--color-active);
+}
+
+.workspaces .item.focused {
+    background-color: var(--color-white);
+}
+
+.workspaces .item.focused label {
+    color: var(--color-dark-primary);
+}
+
+.workspaces .item.urgent {
+    background-color: var(--color-urgent);
+}
+
+.network_manager .icon {
+    margin-left: var(--margin-sm);
+    margin-right: var(--margin-sm);
+}

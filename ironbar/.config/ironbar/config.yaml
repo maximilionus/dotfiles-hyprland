@@ -1,0 +1,100 @@
+position: top
+height: 24
+
+start:
+- type: workspaces
+  on_scroll_up: "hyprctl dispatch 'hl.dsp.focus({workspace=\"e-1\"})'"
+  on_scroll_down: "hyprctl dispatch 'hl.dsp.focus({workspace=\"e+1\"})'"
+
+center: []
+
+end:
+- type: tray
+
+- type: "network_manager"
+  icon_size: 16
+  types_blacklist:
+    - loopback
+    - bridge
+  profiles:
+    wired_disconnected:
+      when:
+        type: "wired"
+        state: "disconnected"
+        icon: "icon:network-wired-disconnected-symbolic"
+
+- type: bluetooth
+  icon_size: 16
+  format:
+    not_found: ""
+    disabled: " Off"
+    enabled: " On"
+    connected: " {device_alias}"
+    connected_battery: " {device_alias} • {device_battery_percent}%"
+    popup:
+      max_height:
+        devices: 5
+      header: " Enable Bluetooth"
+      disabled: "{adapter_status}"
+      device:
+        header: "{device_alias}"
+        header_battery: "{device_alias}"
+        footer: "{device_status}"
+        footer_battery: "{device_status} • Battery {device_battery_percent}%"
+    adapter_status:
+      not_found: "No Bluetooth adapters found"
+      enabled: "Bluetooth enabled"
+      enabling: "Enabling Bluetooth..."
+      disabled: "Bluetooth disabled"
+      disabling: "Disabling Bluetooth..."
+    device_status:
+      connected: "Connected"
+      connecting: "Connecting..."
+      disconnected: "Disconnect"
+      disconnecting: "Disconnecting..."
+
+- type: brightness
+  format: "{percentage}%"
+  smooth_scroll_speed: 0.5
+  show_if: '[ -n "$(find /sys/class/backlight -mindepth 1 -maxdepth 1 -print -quit 2>/dev/null)" ]'
+  mode:
+    type: systemd
+    subsystem: backlight
+    profiles:
+      low:
+        when: 25
+        format: "{percentage}%"
+        icon_label: ""
+      high:
+        when: 100
+        format: "{percentage}%"
+        icon_label: ""
+
+- type: volume
+  format: '{icon} {percentage}%'
+  sink_slider_orientation: vertical
+  max_volume: 100
+  truncate: end
+  truncate_popup: end
+  icons:
+    volume: 󰕾
+    muted: 󰝟
+    profiles:
+      medium:
+        when: 66.66
+        icons:
+          volume: 󰖀
+      low:
+        when: 33.33
+        icons:
+          volume: 󰕿
+
+- type: battery
+  show_if: |
+    ls /sys/class/power_supply/ | grep --quiet '^BAT'
+
+- type: keyboard
+  show_scroll: false
+
+- type: clock
+  format: "%e  %a  %H:%M"
