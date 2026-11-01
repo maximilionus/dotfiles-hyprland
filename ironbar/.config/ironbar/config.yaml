@@ -76,18 +76,10 @@ end:
   max_volume: 100
   truncate: end
   truncate_popup: end
+  use_default_profiles: false
   icons:
     volume: 
     muted: 
-    profiles:
-      medium:
-        when: 66.66
-        icons:
-          volume: 
-      low:
-        when: 33.33
-        icons:
-          volume: 
 
 - type: battery
   show_if: |
