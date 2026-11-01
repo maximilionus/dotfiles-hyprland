@@ -28,9 +28,9 @@ end:
   format:
     not_found: ""
     disabled: " Off"
-    enabled: " On"
+    enabled: ""
     connected: " {device_alias}"
-    connected_battery: " {device_alias} • {device_battery_percent}%"
+    connected_battery: " {device_alias} {device_battery_percent}%"
     popup:
       max_height:
         devices: 5
@@ -77,17 +77,17 @@ end:
   truncate: end
   truncate_popup: end
   icons:
-    volume: 󰕾
-    muted: 󰝟
+    volume: 
+    muted: 
     profiles:
       medium:
         when: 66.66
         icons:
-          volume: 󰖀
+          volume: 
       low:
         when: 33.33
         icons:
-          volume: 󰕿
+          volume: 
 
 - type: battery
   show_if: |
