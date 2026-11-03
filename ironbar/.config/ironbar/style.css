@@ -5,8 +5,7 @@
     --color-active: #6699cc;
     --color-urgent: #8f0a0a;
 
-    --margin-lg: 0.4em;
-    --margin-sm: 0.4em;
+    --margin: 0.4em;
 }
 
 * {
@@ -72,17 +71,19 @@ box, button, label {
 }
 
 button {
-    padding-left: var(--margin-sm);
-    padding-right: var(--margin-sm);
+    padding-left: var(--margin);
+    padding-right: var(--margin);
 }
 
 button:hover, button:active, *:selected {
     background-color: var(--color-dark-secondary);
 }
 
-#end > * + * {
-    margin-left: var(--margin-sm);
-    margin-right: var(--margin-sm);
+#end > * + *,
+.tray .item,
+.network_manager .icon {
+    margin-left: var(--margin);
+    margin-right: var(--margin);
 }
 
 .popup-clock .calendar-clock {
@@ -103,9 +104,4 @@ button:hover, button:active, *:selected {
 
 .workspaces .item.urgent {
     background-color: var(--color-urgent);
-}
-
-.network_manager .icon {
-    margin-left: var(--margin-sm);
-    margin-right: var(--margin-sm);
 }
