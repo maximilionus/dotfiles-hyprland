@@ -412,12 +412,11 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "allow-fullscreen-tearing",
+    name = "game-tearing",
     match = {
-        fullscreen = true,
+        class = "steam_app_.*",
     },
-
-    immediate = true
+    immediate = true,
 })
 
 -- Automatic DnD mode on fullscreen
